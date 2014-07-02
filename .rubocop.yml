@@ -1,0 +1,20 @@
+Style/Encoding:
+  Enabled: false
+
+Style/LineLength:
+  Max: 110
+
+Style/MethodLength:
+  Enabled: false
+
+Style/ClassLength:
+  Enabled: false
+
+Style/CyclomaticComplexity:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Documentation:
+    Enabled: false
