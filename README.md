@@ -12,17 +12,18 @@ Install it yourself as:
 
 A basic usage with the built-in severities:
 
-	```ruby
-	require 'changelog_client'
-	client = ChangelogClient.new('my-server-address', 'my-port')
-	client.send('This is the message', 'INFO', 'my-category')
-	```
+```ruby
+require 'changelog_client'
+client = ChangelogClient.new('my-server-address', 'my-port')
+client.send('This is the message', 'INFO', 'my-category')
+```
 
 You can pass other severity as an int:
 
-	```ruby
-	client.send('This is the message', 8, 'my-category')
-	```
+```ruby
+client.send('This is the message', 8, 'my-category')
+```
+
 On success, it returs `true` on failure, it returns `false`.
 
 ## Default built-in severities
