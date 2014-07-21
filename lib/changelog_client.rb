@@ -1,6 +1,8 @@
 require 'json'
 require 'net/http'
+require 'net/https'
 require 'uri'
+require 'openssl'
 
 SEVERITY = {
   'INFO' => 1,
@@ -38,6 +40,8 @@ class ChangelogClient
   #   extra_headers: (Hash)
   def send(message, severity, category = 'misc', extra_headers = nil)
     http = Net::HTTP.new(@host, server_port)
+    server_port == 443 ? http.use_ssl = true : http.use_ssl = false
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
     headers = {
       'User-Agent' => "ccp/client v.#{Gem.loaded_specs['changelog_client'].version.to_s}",
       'Content-Type' => 'application/json'
