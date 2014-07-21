@@ -47,7 +47,7 @@ class ChangelogClient
       'Content-Type' => 'application/json'
     }
 
-    headers << extra_headers if extra_headers
+    headers.merge!(extra_headers) if extra_headers
 
     data = {
       'criticality' => deflate_severity(severity),

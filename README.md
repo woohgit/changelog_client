@@ -24,6 +24,10 @@ You can pass other severity as an int:
 client.send('This is the message', 8, 'my-category')
 ```
 
+Alternatively you can add extra headers:
+
+client.send('This is the message', 'INFO', 'misc', 'Authorization' => 'Basic b64encoded')
+
 On success, it returs `true` on failure, it returns `false`.
 
 ## Default built-in severities
