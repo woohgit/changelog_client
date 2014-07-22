@@ -14,7 +14,7 @@ A basic usage with the built-in severities:
 
 ```ruby
 require 'changelog_client'
-client = ChangelogClient.new('my-server-address', 'my-port')
+client = ChangelogClient.new('my-server-address', my-port)
 client.send('This is the message', 'INFO', 'my-category')
 ```
 
@@ -26,7 +26,9 @@ client.send('This is the message', 8, 'my-category')
 
 Alternatively you can add extra headers:
 
+```ruby
 client.send('This is the message', 'INFO', 'misc', 'Authorization' => 'Basic b64encoded')
+```
 
 On success, it returs `true` on failure, it returns `false`.
 
