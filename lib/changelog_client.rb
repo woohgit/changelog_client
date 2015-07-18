@@ -38,7 +38,8 @@ class ChangelogClient
   #   severity: (String, Integer)
   #   category: (String)
   #   extra_headers: (Hash)
-  def send(message, severity, category = 'misc', extra_headers = nil)
+  #   extra_fields: (Hash)
+  def send(message, severity, category = 'misc', extra_headers = nil, extra_fields = nil)
     http = Net::HTTP.new(@host, server_port)
     server_port == 443 ? http.use_ssl = true : http.use_ssl = false
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
@@ -55,6 +56,12 @@ class ChangelogClient
       'category' => category,
       'description' => message
     }
+    # In case if you have a forked changelog and added new fields
+    # you can just pass additional field => value pairs
+    unless extra_fields.nil?
+      data.merge!(extra_fields)
+    end
+
     begin
       response = http.post(@endpoint, JSON.generate(data), headers)
       if response.body.include? '"OK"'
